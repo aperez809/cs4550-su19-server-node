@@ -1,11 +1,16 @@
 const pageModel = require('../models/page.model.server');
+const websiteModel = require('../models/website.model.server');
 
-createPage = (page) => {
-    return pageModel.create(page)
+createPage = (websiteId, page) => {
+    //createdPage = pageModel.create(page);
+    return websiteModel.updateOne({_id: websiteId}, {$push: {pages: page}});
+    //return pageModel.create(page)
 }
 
-findPageById = (id) => {
-    return pageModel.findById(id); 
+findPageById = (websiteId, pageId) => {
+    //need to chain find operations to get page from pages array
+    return websiteModel.find({_id: websiteId}, {pages: {_id: pageId}});
+    //return websiteModel.find({_id: websiteId}, {pages: 1});
 }
 
 findPageByCredentials = (un, pw) => {
@@ -20,12 +25,13 @@ findAllPages = () => {
     return pageModel.find();
 }
 
-deletePage = (id) => {
-    return pageModel.findByIdAndDelete(id);
+deletePage = (websiteId, pageId) => {
+    return websiteModel.update({_id: websiteId}, {$pull: {pages: {_id: pageId}}});
 }
 
-updatePage = (id, page) => {
-    return pageModel.updateOne({_id: id}, {$set: page});
+updatePage = (websiteId, pageId, pa) => {
+    //figure this out lol
+    return websiteModel.updateOne({_id: websiteId, pages: {_id: pageId}});
 }
 
 module.exports = {
