@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const Widget = require('./widget.schema.server');
+const Widget = require('./WidgetSchema');
 
 const columnSchema = mongoose.Schema({
     title: String,
-    span: int,
+    span: Number,
     widgets: [Widget]
 }, {collection: 'Columns'});
 

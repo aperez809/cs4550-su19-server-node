@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const User = require('./user.schema.server');
-const Page = require('./page.schema.server');
+const User = require('./UserSchema');
+const Page = require('./PageSchema');
 const WebsiteSchema = mongoose.Schema({
     title: String,
     author: User,
     pages: [Page]
-}, {collection: "Pages"});
+}, {collection: "Websites"});
 
 module.exports = WebsiteSchema;

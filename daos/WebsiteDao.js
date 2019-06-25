@@ -1,14 +1,19 @@
 const WebsiteModel = require('../models/WebsiteModel');
 
-const createWebsite = (website) => WebsiteModel.create(website);
+const createWebsite = (website) => {
+    return WebsiteModel.create(website);
+}
 
-const findAllWebsites = () => WebsiteModel.find();
+const findAllWebsites = () => {
+    return WebsiteModel.find();
+}
 
-const findWebsiteById = (websiteId) =>
-    WebsiteModel.find({_id: websiteId});
+const findWebsiteById = (websiteId) => {
+    return WebsiteModel.findById(websiteId);
+}
 
 const deleteWebsite = (websiteId) =>
-    WebsiteModel.remove({_id: websiteId});
+    WebsiteModel.deleteOne({_id: websiteId});
 
 const updateWebsite = (websiteId, newWebsite) =>
     WebsiteModel.update(
@@ -20,7 +25,6 @@ const updateWebsite = (websiteId, newWebsite) =>
 module.exports = {
     createWebsite,
     findAllWebsites,
-    findWebsiteById,
     deleteWebsite,
-    updateWebsite
+    findWebsiteById
 };

@@ -1,5 +1,5 @@
-const pageModel = require('../models/page.model.server');
-const websiteModel = require('../models/website.model.server');
+const pageModel = require('../models/PageModel');
+const websiteModel = require('../models/WebsiteModel');
 
 createPage = (websiteId, page) => {
     //createdPage = pageModel.create(page);

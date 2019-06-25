@@ -10,7 +10,7 @@ app.use(function(req, res, next) {
     /*res.header("Access-Control-Allow-Origin",
         "https://song-request-client-angular.herokuapp.com");*/
     res.setHeader("Access-Control-Allow-Origin",
-        "http://localhost:4200");
+        "http://localhost:4201");
     res.setHeader("Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept");
     res.setHeader("Access-Control-Allow-Methods",
@@ -33,14 +33,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
 require('./db/database')();
-const userDao = require('./dao/user.dao.server');
-const userService = require('./services/user.service.server');
+const userDao = require('./daos/UserDao');
+/*const userService = require('./services/UserService');
 userService(app);
 
-const partyDao = require('./dao/party.dao.server');
-const partyService = require('./services/party.service.server');
-partyService(app);
-
-require('./services/session.service.server')(app);
+const partyDao = require('./daos/PageDao');
+const partyService = require('./services/PageService');
+PageService(app);
+*/
+require('./controllers/WebsiteController')(app);
 
 app.listen(process.env.PORT || 3001);
