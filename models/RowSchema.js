@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Column = require('./row.schema.server');
+const Column = require('./column.schema.server');
 
 const rowSchema = mongoose.Schema({
     title: String,
