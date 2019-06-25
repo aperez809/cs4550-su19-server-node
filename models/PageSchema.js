@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Row = require('./row.schema.server');
 
-const userSchema = mongoose.Schema({
+const PageSchema = mongoose.Schema({
     title: String,
     rows: [Row]
-}, {collection: 'Users'});
+}, {collection: 'Pages'});
 
-module.exports = userSchema;
+module.exports = PageSchema;
